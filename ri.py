@@ -81,7 +81,9 @@ class RiInputCommand(sublime_plugin.TextCommand):
     if not sel.empty():
       value = view.substr(sel)
     else:
-      value = ""
+      value = view.word(sel)
+      value = view.substr(value)
+
 
     view.window().show_input_panel(msg, value, self.on_done, None, None)
 
